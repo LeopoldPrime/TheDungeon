@@ -5,7 +5,7 @@ rooms = ["You enter the next room and there is three paths Left, Right And Strai
 encounterChance = [1,2,3,4,5,6]
 guessNumber = [1,2,3]
 randomNumbers = [1,2,3,4,5,6,7,8,9,10]
-PlayerHP = 1
+PlayerHP = 100
 introText = "You have heard of a mystical weapon in a cave, So you a young barbarian sets out to explore the cave and recover the mystical weapon"
 
 print("==========================")
