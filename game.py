@@ -36,37 +36,40 @@ def pathSelector():
         print("You decide to turn right deeper into the cave")
 
 def monsterEncounter():
-    print("You enter the next room and you encounter a monster")
-    print("To beat the monster you must guess the number the monster is thinking")
-    print("The number will be either 1, 2 or 3")
-    print("What do you guess")
-    playerInput = input()
-    if playerInput == random.choice(guessNumber):
-        print("you have successfully guess the number and beatened the monster and you are able to continue forward")
-    elif playerInput != random.choice(guessNumber):
-        print("You have guessed the wrong number and take damage")
-        global PlayerHP
-        PlayerHP -= random.choice(randomNumbers)
-        print("Your HP Is",PlayerHP)
-
-while PlayerHP > 0:
-    print(random.choice(rooms))
-    pathSelector()
     if random.choice(encounterChance) <= 4:
         print(random.choice(rooms))
         pathSelector()
     else:
-        monsterEncounter()
-    if randomNumbers == 10:
+        print("You enter the next room and you encounter a monster")
+        print("To beat the monster you must guess the number the monster is thinking")
+        print("The number will be either 1, 2 or 3")
+        print("What do you guess")
+        playerInput = input()
+        if playerInput == random.choice(guessNumber):
+            print("you have successfully guess the number and beatened the monster and you are able to continue forward")
+        elif playerInput != random.choice(guessNumber):
+            print("You have guessed the wrong number and take damage")
+            global PlayerHP
+            PlayerHP -= random.choice(randomNumbers)
+            print("Your HP Is",PlayerHP)
+
+def healingShrine():
+    if random.choice(randomNumbers) >= 6:
         print('You encounter a healing shrint you if you guess the right number you restore some of your hp')
         print('Guess the number it can be 1, 2 and 3')
         playerInput = input()
         if playerInput == random.choice(guessNumber):
-           print("You guess correctly the shrine glows green and it heals you")
-           PlayerHP += random.choice(randomNumbers)
-           print("Your HP is now", PlayerHP)
+            print("You guess correctly the shrine glows green and it heals you")
+            PlayerHP += random.choice(randomNumbers)
+            print("Your HP is now", PlayerHP)
         else:
             print("You guess the wrong number and the shrine crumbles")
+
+while PlayerHP > 0:
+    print(random.choice(rooms))
+    pathSelector()
+    monsterEncounter()
+    healingShrine()
     if PlayerHP <= 0:
         print("Your HP has reached zero and you have died thank you for playing my game")
         quit()
